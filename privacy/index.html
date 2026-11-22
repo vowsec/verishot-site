@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — VeriShot</title>
+<meta name="description" content="VeriShot privacy policy: evidence photos and videos stay on your device; only hashes leave it.">
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0 auto; max-width: 760px; padding: 48px 24px 96px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7; color: #1c1c1e; background: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #f2f2f7; background: #000; }
+    a { color: #6cb4ff; }
+    .meta, .note { color: #a1a1a6; }
+    td, th { border-color: #38383a; }
+    .lang a { color: #6cb4ff; }
+  }
+  h1 { font-size: 30px; line-height: 1.3; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 40px 0 12px; }
+  h3 { font-size: 17px; margin: 24px 0 8px; }
+  p, li { font-size: 16px; }
+  .meta { font-size: 14px; color: #6e6e73; margin-bottom: 8px; }
+  .lang { font-size: 14px; margin-bottom: 32px; }
+  a { color: #0066cc; }
+  ul { padding-left: 22px; }
+  .note { font-size: 14px; color: #6e6e73; }
+  code { font-size: 14px; }
+</style>
+</head>
+<body>
+<p class="lang"><a href="./zh/">中文版本</a></p>
+
+<h1>Privacy Policy</h1>
+<p class="meta">VeriShot (evidence camera) &middot; Effective 22 November 2026 &middot; Operator: Vowsec</p>
+
+<p>VeriShot is a camera for producing verifiable evidence. This policy explains, in concrete terms, what stays on your phone, what leaves it, and why. If a sentence here cannot be checked against the app's behaviour, treat it as a bug and tell us.</p>
+
+<h2>1. What stays on your device</h2>
+<p>Photos, videos, meeting recordings, sealed credentials and their verification results are stored in the app's own storage on your phone. We do not have a copy.</p>
+<ul>
+  <li>The free monthly allowance (5 photos, 5 minutes of video, 30 minutes of meetings) is counted in a local ledger on your device.</li>
+  <li>Your purchase state is cached locally so the app can unlock features before the store responds.</li>
+  <li>Deleting the app removes all of the above. Exports you saved to your photo library or shared elsewhere are outside the app and are not affected.</li>
+</ul>
+
+<h2>2. Permissions and what they are used for</h2>
+<ul>
+  <li><strong>Camera</strong> — required to capture evidence. Frames are processed on the phone.</li>
+  <li><strong>Microphone</strong> — required for recording sound in videos and for live meetings. We never record audio in the background.</li>
+  <li><strong>Location (while in use, optional)</strong> — if you allow it, the capture location is written into the certificate so the record shows where it was made. Denying it does not block capture or sealing.</li>
+  <li><strong>Photo library (add only)</strong> — used only when you tap "Save to Photos" on a certificate or media file.</li>
+</ul>
+
+<h2>3. When the app uses the network</h2>
+
+<h3>3.1 Timestamps (hashes only)</h3>
+<p>Sealing asks an independent RFC&nbsp;3161 timestamp authority to sign the current hash. The request is relayed through our server at <code>verify.vowsec.com</code> so that devices which cannot reach the authority directly still get a timestamp. The relay forwards a hash and receives a signed token; it does not receive your photo, video, audio, or file name.</p>
+
+<h3>3.2 Share links (the certificate, not the media)</h3>
+<p>When you create a share link, the app uploads the credential document to <code>verify.vowsec.com</code> so that the link can open in any browser. That document contains hashes, signatures, the timestamp token, and the metadata you chose to include (for example capture time, location if enabled, device model, and app version). It does <strong>not</strong> contain the photo, video, or audio itself — the link only lets the recipient verify that the file they hold matches the sealed hash.</p>
+<p>Anyone with the link can read the certificate. Do not share a link if its metadata is sensitive to you.</p>
+
+<h3>3.3 Live meetings</h3>
+<p>During a live session, signalling messages and timestamp anchors pass through our server. Audio and video travel over WebRTC, encrypted in transit with DTLS-SRTP. We do not record, store, or listen to meeting media.</p>
+
+<h2>4. Purchases</h2>
+<p>Subscriptions and the lifetime option are bought through Apple's In-App Purchase (iOS) or Google Play Billing (Android). Payment is handled entirely by the store; we never see your card number or billing address. The app receives only whether an entitlement is active, and it can restore purchases through the same store account. There is no account on our side.</p>
+
+<h2>5. What we never do</h2>
+<ul>
+  <li>No account, no sign-up, no password.</li>
+  <li>No advertising SDK and no cross-app tracking. We do not ask for App Tracking Transparency permission because we do not track you.</li>
+  <li>No analytics or crash-reporting SDK that profiles your content.</li>
+  <li>We do not sell, rent, or share personal data with data brokers.</li>
+  <li>We do not upload your photos, videos, or meeting media.</li>
+</ul>
+
+<h2>6. Retention and deletion</h2>
+<p>Local data lives until you delete it or uninstall the app. Shared certificates remain on <code>verify.vowsec.com</code> so that the links you handed out keep working; write to us if you want a specific link removed, and we will delete it. Timestamp requests are transient and are not retained beyond the response.</p>
+
+<h2>7. Children</h2>
+<p>VeriShot is a general-purpose evidence tool and is not directed to children under 13 (or the minimum age required in your country). We do not knowingly collect data from children; there is no account or profile to collect it into.</p>
+
+<h2>8. Your rights</h2>
+<p>Because we hold no account and no media, most requests can be satisfied by deleting data on your device. For shared certificates, or for questions under the GDPR, UK GDPR, CCPA/CPRA or similar laws, contact us and we will respond within the period those laws require. You may also complain to your local data protection authority.</p>
+
+<h2>9. Security</h2>
+<p>Traffic to our servers uses HTTPS. Signing keys for credentials are generated and kept on your device; we do not hold a copy. Shared certificates are stored so that a verifier can re-run every check rather than trusting our word.</p>
+
+<h2>10. Changes</h2>
+<p>If this policy changes in a way that affects what leaves your device, we will update this page and change the effective date above before the change ships in an app update.</p>
+
+<h2>11. Contact</h2>
+<p>Vowsec &middot; <a href="mailto:support@vowsec.com">support@vowsec.com</a> &middot; <a href="mailto:zqgjlhq@163.com">zqgjlhq@163.com</a></p>
+<p class="note">See also our <a href="../../terms.html">Terms of Use</a>.</p>
+</body>
+</html>
